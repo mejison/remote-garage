@@ -33,7 +33,7 @@
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTEyMTEwOTcsImlhdCI6MTU1MTIwMzg5NywidXNyIjoibWVqaXNvbiJ9.yVyDNkFo6t19Uo3O0XClOm3V8A3YriCmnrXR2Q97IRs"
+              "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXYiOiJlbmMyOGo2MCIsImlhdCI6MTU1MTIxNTgxMiwianRpIjoiNWM3NWFjYzQ3N2QwNzViZTIzYmVmMjU2IiwidXNyIjoibWVqaXNvbiJ9.iU-AfqdBuiQ3cfaSi1x-McUyJ5j-oLGTfT8GtA8rDSI"
             },
             body: JSON.stringify({"in": this.toggles['two']})
           });   
@@ -43,7 +43,7 @@
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTEyMTEwOTcsImlhdCI6MTU1MTIwMzg5NywidXNyIjoibWVqaXNvbiJ9.yVyDNkFo6t19Uo3O0XClOm3V8A3YriCmnrXR2Q97IRs"
+              "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXYiOiJlbmMyOGo2MCIsImlhdCI6MTU1MTIxNTgxMiwianRpIjoiNWM3NWFjYzQ3N2QwNzViZTIzYmVmMjU2IiwidXNyIjoibWVqaXNvbiJ9.iU-AfqdBuiQ3cfaSi1x-McUyJ5j-oLGTfT8GtA8rDSI"
             },
             body: JSON.stringify({"in": this.toggles['three']})
           });   
