@@ -1,28 +1,60 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="d-flex align-items-center justify-content-center flex-column">
+    <toggle-button 
+      v-model="toggles.two"
+      color="#82C7EB" />
+
+    <toggle-button 
+        v-model="toggles.three"
+      color="#82C7EB" />
+
+    <toggle-button 
+       v-model="toggles.four"
+      color="#82C7EB" />    
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  export default {
+    name: 'app',
+    data() {
+      return {
+        toggles: {
+          two: false,
+          three: false,
+          four: false
+        }
+      }
+    },
+    watch: {
+      'toggles.two': function() {
+          
+       fetch(`https://api.thinger.io/v2/users/mejison/devices/enc28j60/two`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTEyMTEwOTcsImlhdCI6MTU1MTIwMzg5NywidXNyIjoibWVqaXNvbiJ9.yVyDNkFo6t19Uo3O0XClOm3V8A3YriCmnrXR2Q97IRs"
+            },
+            body: JSON.stringify({"in": this.toggles['two']})
+          });   
+      },
+      'toggles.three': function() {
+         fetch(`https://api.thinger.io/v2/users/mejison/devices/enc28j60/three`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTEyMTEwOTcsImlhdCI6MTU1MTIwMzg5NywidXNyIjoibWVqaXNvbiJ9.yVyDNkFo6t19Uo3O0XClOm3V8A3YriCmnrXR2Q97IRs"
+            },
+            body: JSON.stringify({"in": this.toggles['three']})
+          });   
+      }
+    }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  body,
+  #app {
+    height: 100vh;
+  }
 </style>

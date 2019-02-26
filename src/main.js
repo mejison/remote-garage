@@ -3,6 +3,12 @@ import App from './App.vue'
 
 Vue.config.productionTip = false
 
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import ToggleButton from 'vue-js-toggle-button'
+ 
+Vue.use(ToggleButton)
+
 new Vue({
   render: h => h(App),
 }).$mount('#app')
