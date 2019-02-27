@@ -8,8 +8,14 @@ let getHeader = () => {
 };
 
 export default {
+    check() {
+        return fetch(`${config.api_url}/users/mejison/devices/${config.device_id}`, {
+            method: "GET",
+            headers: getHeader()
+        }).then(res => res.json());
+    },
     set(thing, value) {
-        return fetch(`https://api.thinger.io/v2/users/mejison/devices/enc28j60/${thing}`, {
+        return fetch(`${config.api_url}/users/mejison/devices/${config.device_id}/${thing}`, {
             method: "POST",
             headers: getHeader(),
             body: JSON.stringify({"in": value})
