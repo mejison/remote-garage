@@ -2,19 +2,24 @@
   <div id="app" class="d-flex align-items-center justify-content-center flex-column">
     <toggle-button 
       v-model="toggles.two"
+      :sync="true"
       color="#82C7EB" />
 
     <toggle-button 
-        v-model="toggles.three"
+      v-model="toggles.three"
+      :sync="true"
       color="#82C7EB" />
 
     <toggle-button 
-       v-model="toggles.four"
+      v-model="toggles.four"
+      :sync="true"
       color="#82C7EB" />    
   </div>
 </template>
 
 <script>
+  import api from './api';
+
   export default {
     name: 'app',
     data() {
@@ -26,27 +31,27 @@
         }
       }
     },
+    mounted() {
+      this.getThing();
+    },
+    methods: {
+      getThing() {
+        for(let t in this.toggles) {
+          api.get(t).then(res => {
+            this.toggles = {...this.toggles, [t]:  res.state};
+          })          
+        }
+      }
+    },
     watch: {
       'toggles.two': function() {
-          
-       fetch(`https://api.thinger.io/v2/users/mejison/devices/enc28j60/two`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXYiOiJlbmMyOGo2MCIsImlhdCI6MTU1MTIxNTgxMiwianRpIjoiNWM3NWFjYzQ3N2QwNzViZTIzYmVmMjU2IiwidXNyIjoibWVqaXNvbiJ9.iU-AfqdBuiQ3cfaSi1x-McUyJ5j-oLGTfT8GtA8rDSI"
-            },
-            body: JSON.stringify({"in": this.toggles['two']})
-          });   
+        api.set('two', this.toggles['two']);
       },
       'toggles.three': function() {
-         fetch(`https://api.thinger.io/v2/users/mejison/devices/enc28j60/three`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXYiOiJlbmMyOGo2MCIsImlhdCI6MTU1MTIxNTgxMiwianRpIjoiNWM3NWFjYzQ3N2QwNzViZTIzYmVmMjU2IiwidXNyIjoibWVqaXNvbiJ9.iU-AfqdBuiQ3cfaSi1x-McUyJ5j-oLGTfT8GtA8rDSI"
-            },
-            body: JSON.stringify({"in": this.toggles['three']})
-          });   
+        api.set('three', this.toggles['three']);
+      },
+      'toggles.four': function() {
+        api.set('four', this.toggles['four']);
       }
     }
   }
