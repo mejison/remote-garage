@@ -13,7 +13,7 @@
       :disabled="disabled"
       color="#82C7EB" />
 
-    <toggle-button 
+    <!-- <toggle-button 
       v-model="toggles.three"
       :sync="true"
       :disabled="disabled"
@@ -23,7 +23,7 @@
       v-model="toggles.four"
       :sync="true"
       :disabled="disabled"
-      color="#82C7EB" />    
+      color="#82C7EB" />     -->
   </div>
 </template>
 
